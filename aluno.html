@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minha agenda | Move Pilates & Bem-estar</title>
+    <link rel="icon" type="image/svg+xml" href="assets/logo-move.svg" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/forms.css" />
+    <link rel="stylesheet" href="assets/css/aluno.css" />
+    <script defer src="assets/vendor/bootstrap.bundle.min.js"></script>
+    <script defer src="js/script.js"></script>
+    <script defer src="js/store-cadastro-login.js"></script>
+    <script defer src="js/store-aluno.js"></script>
+    <script defer src="js/aluno.js"></script>
+  </head>
+  <body data-page="aluno">
+    <a class="skip-link" href="#conteudo">Conteúdo</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html" class="brand" aria-label="Move — Início"
+          ><img
+            src="assets/imagens/logo-move.svg"
+            alt="Move Pilates & Bem-estar"
+            width="154"
+            height="62"
+        /></a>
+        <button
+          type="button"
+          class="menu-toggle"
+          aria-label="Abrir menu"
+          aria-controls="menu-principal"
+          aria-expanded="false"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+        <nav class="main-nav" id="menu-principal" aria-label="Menu principal">
+          <a href="aluno.html" class="nav-item active" aria-current="page"
+            >Minha agenda</a
+          ><a href="contato.html" class="nav-item">Contato</a
+          ><button type="button" class="nav-item nav-logout" data-logout>
+            Sair
+          </button>
+        </nav>
+      </div>
+    </header>
+    <main id="conteudo">
+      <section class="dashboard-area">
+        <div class="container dashboard-wrap">
+          <div class="dashboard-head">
+            <div>
+              <span class="accent-line" aria-hidden="true"></span>
+              <p class="eyebrow">Área do aluno</p>
+              <h1>Olá, <span id="student-name">aluno</span>!</h1>
+              <p>Confira seus próximos agendamentos e organize suas aulas.</p>
+            </div>
+
+            <button class="btn-main" type="button" id="new-student-booking">
+              + Agendar aula
+            </button>
+          </div>
+
+          <div class="info-strip" role="note">
+            <span class="info-icon" aria-hidden="true">i</span>
+
+            <div class="info-content">
+              <h3>Nosso compromisso com você</h3>
+
+              <p>
+                Você pode alterar ou cancelar seu agendamento com até
+                <strong>24 horas de antecedência.</strong>
+              </p>
+
+              <p>
+                Caso a professora precise alterar ou cancelar uma aula com menos
+                de
+                <strong>24 horas de antecedência</strong>, isso ocorrerá somente
+                em situações justificadas.
+              </p>
+
+              <p>
+                Nosso compromisso é respeitar sua organização e manter uma
+                relação de confiança.
+              </p>
+            </div>
+          </div>
+          <div id="student-notice" class="notice" role="status" hidden></div>
+          <section
+            class="dashboard-section"
+            aria-labelledby="student-agenda-title"
+          >
+            <div class="section-title-row">
+              <h2 id="student-agenda-title">Meus agendamentos</h2>
+              <span class="subtle-pill" id="student-count">0 aulas</span>
+            </div>
+            <div
+              id="student-bookings"
+              class="booking-cards"
+              aria-live="polite"
+            ></div>
+          </section>
+        </div>
+      </section>
+      <section
+        class="auth-outer logout-success-panel"
+        id="student-logout-success"
+        hidden
+      >
+        <div class="auth-panel card-elevated">
+          <img
+            src="assets/imagens/logo-move.svg"
+            alt="Move Pilates & Bem-estar"
+            class="auth-logo"
+          />
+
+          <div class="result-panel">
+            <span class="result-icon" aria-hidden="true">✓</span>
+            <h1>Sessão encerrada!</h1>
+            <p>Você saiu da sua conta com segurança.</p>
+
+            <div class="form-actions">
+              <a href="login.html" class="btn-main">Entrar novamente</a>
+              <a href="index.html" class="btn-outline">Voltar ao início</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a class="footer-brand" href="index.html"
+          ><img
+            src="assets/imagens/logo-move.svg"
+            alt="Move Pilates & Bem-estar"
+            width="136"
+            height="56"
+        /></a>
+        <p>
+          © <span id="ano-atual">2026</span> Move. Projeto acadêmico
+          demonstrativo.
+        </p>
+        <a class="footer-top" href="index.html">Início</a>
+      </div>
+    </footer>
+    <dialog
+      id="student-book-dialog"
+      class="move-dialog"
+      aria-labelledby="student-book-title"
+    >
+      <form id="student-book-form" novalidate>
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Agendamento</p>
+            <h2 id="student-book-title">Agendar aula</h2>
+          </div>
+          <button
+            type="button"
+            class="icon-close"
+            data-close="student-book-dialog"
+            aria-label="Fechar"
+          >
+            ×
+          </button>
+        </div>
+        <p class="dialog-description">
+          Selecione uma data e um horário para a aula.
+        </p>
+        <div class="stack-form">
+          <div class="form-field">
+            <label for="student-date"
+              >Data <span aria-hidden="true">*</span></label
+            ><input type="date" id="student-date" name="date" required />
+          </div>
+          <div class="form-field">
+            <label for="student-time"
+              >Horário disponível <span aria-hidden="true">*</span></label
+            ><select id="student-time" name="time" required>
+              <option value="">Selecione a data primeiro</option>
+            </select>
+          </div>
+        </div>
+        <p class="selection-summary" id="student-summary">
+          Escolha uma data e um horário para conferir sua aula.
+        </p>
+        <p id="student-book-error" class="form-alert" role="alert" hidden></p>
+        <div class="dialog-actions">
+          <button
+            type="button"
+            class="btn-outline"
+            data-close="student-book-dialog"
+          >
+            Voltar para agenda</button
+          ><button type="submit" class="btn-main" id="student-confirm-btn">
+            Confirmar agendamento
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <dialog
+      id="student-cancel-dialog"
+      class="move-dialog"
+      aria-labelledby="student-cancel-title"
+    >
+      <div class="dialog-header">
+        <div>
+          <p class="eyebrow">Cancelamento</p>
+          <h2 id="student-cancel-title">Cancelar agendamento?</h2>
+        </div>
+        <button
+          type="button"
+          class="icon-close"
+          data-close="student-cancel-dialog"
+          aria-label="Fechar"
+        >
+          ×
+        </button>
+      </div>
+      <p id="student-cancel-detail"></p>
+      <p class="small-muted">
+        O cancelamento deve respeitar 24 horas de antecedência.
+      </p>
+      <p id="student-cancel-error" class="form-alert" role="alert" hidden></p>
+      <div class="dialog-actions">
+        <button
+          class="btn-outline"
+          type="button"
+          data-close="student-cancel-dialog"
+        >
+          Voltar para agenda</button
+        ><button class="btn-danger" type="button" id="student-do-cancel">
+          Confirmar cancelamento
+        </button>
+      </div>
+    </dialog>
+    <dialog
+      class="move-dialog"
+      id="logout-dialog"
+      aria-labelledby="logout-title"
+    >
+      <div class="dialog-header">
+        <div>
+          <p class="eyebrow">Encerrar sessão</p>
+          <h2 id="logout-title">Deseja sair da sua conta?</h2>
+        </div>
+        <button
+          type="button"
+          class="icon-close"
+          data-close="logout-dialog"
+          aria-label="Fechar"
+        >
+          ×
+        </button>
+      </div>
+      <p>Você poderá entrar novamente quando quiser.</p>
+      <div class="dialog-actions">
+        <button class="btn-outline" type="button" data-close="logout-dialog">
+          Cancelar</button
+        ><button class="btn-main" id="confirm-logout" type="button">
+          Sair
+        </button>
+      </div>
+    </dialog>
+  </body>
+</html>

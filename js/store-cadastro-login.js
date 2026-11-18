@@ -415,6 +415,9 @@
 
   const authStore = {
     init,
+ cadastro-login
+    read,
+    write,
     account,
     role,
     publicUser,
