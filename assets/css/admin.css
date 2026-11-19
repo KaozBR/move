@@ -1,0 +1,254 @@
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 22px 25px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+}
+
+.stat-card > span {
+  color: var(--blue-secondary);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.stat-card strong {
+  margin-block: 7px;
+  color: var(--blue);
+  font-size: 39px;
+  font-weight: 720;
+  line-height: 1.35;
+}
+
+.stat-card small {
+  color: var(--secondary);
+  font-size: 12px;
+}
+
+.admin-schedule {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+}
+
+.slot-row {
+  display: grid;
+  grid-template-columns:
+    minmax(90px, 0.7fr)
+    minmax(170px, 1.5fr)
+    minmax(90px, 1fr)
+    minmax(220px, 1fr);
+  align-items: center;
+  gap: 16px;
+  min-height: 73px;
+  padding: 13px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.slot-row:last-child {
+  border-bottom: 0;
+}
+
+.slot-row:nth-child(even) {
+  background: var(--surface-alt);
+}
+
+.slot-time {
+  color: var(--blue-secondary);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.slot-name {
+  min-width: 0;
+  color: var(--secondary);
+  font-size: 14px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.slot-status {
+  color: var(--success);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.slot-status.busy {
+  color: var(--blue);
+}
+
+.slot-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  min-width: 0;
+  gap: 6px;
+}
+
+.slot-actions button {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 36px;
+  white-space: nowrap;
+}
+
+.inbox-list {
+  display: grid;
+  gap: 11px;
+}
+
+.inbox-item {
+  padding: 14px 17px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+}
+
+.inbox-item strong {
+  color: var(--blue-secondary);
+  font-size: 14px;
+}
+
+.inbox-item p {
+  margin: 7px 0 5px;
+  color: var(--secondary);
+  font-size: 13px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.inbox-meta {
+  color: var(--secondary);
+  font-size: 12px;
+}
+
+#admin-hours-title,
+#admin-book-title,
+#admin-cancel-title,
+#admin-day-title {
+  color: var(--blue-secondary);
+}
+
+.small-muted {
+  margin-top: 12px;
+}
+
+.date-control {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 210px;
+}
+
+.date-control label {
+  color: var(--blue-secondary);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.date-control input[type="date"] {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 13px;
+  color: var(--ink);
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.date-control input[type="date"]:focus {
+  border-color: var(--blue);
+  outline: var(--outline);
+  background: var(--surface);
+}
+
+.date-control input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
+}
+
+.date-control input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+@media (max-width: 690px) {
+  .stats-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 18px;
+  }
+
+  .stat-card > span,
+  .stat-card small {
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+  }
+
+  .stat-card strong {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .slot-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 9px;
+    min-height: auto;
+    padding: 15px;
+  }
+
+  .slot-time,
+  .slot-name,
+  .slot-status,
+  .slot-actions {
+    grid-column: 1;
+    grid-row: auto;
+    min-width: 0;
+  }
+
+  .slot-time {
+    font-size: 16px;
+  }
+
+  .slot-name {
+    overflow-wrap: anywhere;
+  }
+
+  .slot-actions {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .slot-actions button {
+    flex: 1 1 110px;
+    white-space: normal;
+  }
+
+  .main-nav button.nav-item {
+    width: 100%;
+    padding: 14px 10px;
+    text-align: left;
+  }
+}

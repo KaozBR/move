@@ -174,11 +174,27 @@
       }
 
       const seed = await fixtures();
+
+      let changed = false;
+
+      if (!Array.isArray(existing.days)) {
+        existing.days = [];
+        changed = true;
+      }
+
+      if (!Array.isArray(existing.bookings)) {
+        existing.bookings = [];
+        changed = true;
+      }
+
+      if (!Array.isArray(existing.messages)) {
+        existing.messages = [];
+        changed = true;
+      }
+
       const existingEmails = new Set(
         existing.users.map((user) => safeEmail(user.email)),
       );
-
-      let changed = false;
 
       for (const demo of seed.contasDemo) {
         if (
@@ -192,9 +208,7 @@
 
         const email = safeEmail(demo.email);
 
-        if (existingEmails.has(email)) {
-          continue;
-        }
+        if (existingEmails.has(email)) continue;
 
         const user = await demoUser(
           demo.nome,
@@ -205,6 +219,26 @@
 
         existing.users.push(user);
         existingEmails.add(email);
+        changed = true;
+      }
+
+      const existingDates = new Set(existing.days.map((day) => day.date));
+
+      for (let i = 0; i < 42; i++) {
+        const date = new Date();
+
+        date.setHours(12, 0, 0, 0);
+        date.setDate(date.getDate() + i);
+
+        const formattedDate = todayLocal(date);
+
+        if (existingDates.has(formattedDate)) continue;
+
+        existing.days.push({
+          date: formattedDate,
+          times: normalizedSlots(formattedDate, seed.horariosPadrao),
+        });
+
         changed = true;
       }
 
@@ -415,7 +449,6 @@
 
   const authStore = {
     init,
- cadastro-login
     read,
     write,
     account,
