@@ -26,6 +26,19 @@
   align-self: center;
 }
 
+.hero-login-btn {
+  padding: 11px 52px;
+  text-align: center;
+  font-size: 16px;
+  background-color: var(--blue);
+  color: white;
+}
+
+.hero-login-btn:hover {
+  color: white;
+  background-color: var(--blue-hover);
+}
+
 .hero h1 {
   max-width: 510px;
 }
@@ -46,6 +59,11 @@
   font-size: 15px;
   max-width: 375px;
   margin-bottom: 0;
+}
+
+.hero-login-btn {
+  margin-top: 12px;
+  width: fit-content;
 }
 
 .hero-media {
@@ -205,67 +223,59 @@
 
 .location-layout {
   display: grid;
-  grid-template-columns: minmax(0, 40%) minmax(0, 60%);
-  gap: 32px;
-  align-items: stretch;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 55px;
+  align-items: center;
 }
 
 .location-content {
-  padding: 4px 5px 0 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.location-content .blue-line {
-  margin-bottom: 13px;
-}
-
-.location-content .eyebrow {
-  font-size: 10px;
-  margin-bottom: 10px;
-}
-
 .location h2 {
-  font-size: clamp(27px, 2.6vw, 34px);
-  margin-bottom: 12px;
+  font-size: clamp(27px, 2.6vw, 36px);
+  line-height: 1.2;
+  margin-bottom: 15px;
   max-width: 430px;
 }
 
 .location-lead {
   font-size: 15px;
-  max-width: 415px;
-  margin-bottom: 20px;
-  line-height: 1.55;
+  max-width: 440px;
+  margin-bottom: 30px;
+  line-height: 1.65;
+  color: var(--secondary);
 }
 
 .address-list {
   width: 100%;
-  display: grid;
-  gap: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 .address-row {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 15px;
 }
 
 .address-icon {
-  margin-top: 2px;
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
   display: grid;
   place-items: center;
-  border-radius: 9px;
+  border-radius: 11px;
   background: var(--blue-subtle);
   color: var(--blue);
   flex: none;
 }
 
 .address-icon svg {
-  width: 17px;
-  height: 17px;
+  width: 20px;
+  height: 20px;
   stroke: currentColor;
   stroke-width: 1.8;
   fill: none;
@@ -276,25 +286,38 @@
 .address-row div {
   display: flex;
   flex-direction: column;
-  line-height: 1.35;
+  line-height: 1.5;
 }
 
 .address-row strong {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--ink);
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 
-.address-row span:last-child {
+.address-row div span {
   font-size: 14px;
   color: var(--secondary);
+}
+
+.location-map {
+  width: 100%;
+}
+
+.location-map h3 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--blue-secondary);
+  margin-bottom: 18px;
+  text-transform: uppercase;
 }
 
 .map-panel {
   position: relative;
   overflow: hidden;
   background: var(--surface-soft);
-  min-height: 460px;
+  min-height: 440px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-soft);
@@ -331,10 +354,6 @@
   fill: none;
   stroke: var(--blue);
   stroke-width: 2;
-}
-
-.home-contact-btn {
-  margin-top: 24px;
 }
 
 @media (max-width: 960px) {
@@ -400,7 +419,23 @@
     padding-bottom: 19px;
   }
 
+  .location-layout {
+    gap: 30px;
+  }
+
+  .location h2 {
+    font-size: 27px;
+  }
+
+  .location-lead {
+    font-size: 14px;
+  }
+
+  .address-list {
+    gap: 22px;
+  }
+
   .map-panel {
-    min-height: 345px;
+    min-height: 300px;
   }
 }
