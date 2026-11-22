@@ -116,7 +116,7 @@
     return daySlots(date).filter(
       (time) =>
         !booked(date, time, ignoreId) &&
-        dateTime(date, time).getTime() > Date.now(),
+        dateTime(date, time).getTime() - Date.now() >= 24 * HOUR_MS,
     );
   }
 
@@ -130,8 +130,10 @@
 
     const when = dateTime(date, time).getTime();
 
-    if (!Number.isFinite(when) || when <= Date.now()) {
-      fail("Selecione uma data e um horário futuros.");
+    if (!Number.isFinite(when) || when - Date.now() < 24 * HOUR_MS) {
+      fail(
+        "O agendamento deve ser realizado com pelo menos 24 horas de antecedência.",
+      );
     }
 
     if (!daySlots(date).includes(time)) {
