@@ -46,7 +46,7 @@ Em caso de cancelamento pela administração, o aluno deve ser comunicado e ter 
 
 ## 🌐 Acesso à aplicação
 
-- **Interface web:** https://github.com/KaozBR/move
+- **Interface web:** https://kaozbr.github.io/move/
 
 ## 🛠️ Tecnologias utilizadas
 
